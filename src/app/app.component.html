@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+   
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="#">
+                        <div class="title">
+                            <img src="assets/avta.jpg" alt="" class="img-title">
+                           
+               
+                        </div>
+                    </a>
+                </li>
+                <p class="title"> Tên Đăng Nhập: {{ username }}</p>
+
+                <li>
+                    <a href="#" routerLink="admin/home" >
+                        <i class='bx bx-home-circle'></i>
+                        <div class="title">
+                            Trang Chủ
+                        </div>
+                    </a>
+                </li>
+                <!-- <li class="dropdown">
+                    <a href="#" routerLink="admin/duanlist">
+                        <i class="bx bxs-spreadsheet"></i>
+                        <div class="title">
+                            Danh Sách Dự Án
+                        </div>
+                        
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" routerLink="admin/duanthem">Thêm Dự Án</a>
+                        </div>
+                </li> -->
+                <li>
+                    <a href="#" routerLink="admin/duanlist">
+                        <i class="bx bxs-spreadsheet"></i>
+                        <div class="title">
+                            Danh Sách Dự Án
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"  routerLink="admin/tasklist">
+                        <i class='bx bxs-shopping-bags'></i>
+                        <div class="title">
+                           Danh Sách Task
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" routerLink="admin/nhanvienlist">
+                        <i class='bx bx-user-circle'></i>
+                        <div class="title">
+                            Nhân viên 
+                        </div>
+                    </a>
+                </li>
+               
+
+                <li>
+                    <a href="#" *ngIf="daDangNhap()"  routerLink="admin/doipass">
+                        <i class='bx bxs-chevron-down-square' ></i>
+                        <div class="title">
+                            Đổi Mật Khẩu
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" routerLink="admin/dangnhap">
+                        <i class='bx bxs-chevron-down-square' ></i>
+                        <div class="title">
+                            Đăng Nhập
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" routerLink="admin/dangky">
+                        <i class='bx bxs-chevron-down-square' ></i>
+                        <div class="title">
+                            Đăng Ký
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" (click)="thoat()"  *ngIf="daDangNhap()">
+                        <i class='bx bx-log-out'></i>
+                        <div class="title">
+                            Đăng Xuất
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="top-bar">
+                <i class='bx bx-menu'></i>
+                <div class="search">
+                    <input class="form-control me-2 timkiem"  placeholder="Tìm kiếm" aria-label="Search" >
+                    <label for="search"><i class="fas fa-search"></i></label>
+                </div>
+                <i class='bx bxs-bell-ring'></i>
+                <div class="user">
+                    <img src="assets/avta.jpg" alt="">
+                </div>
+                
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{listNhanVien.length}}</div>
+                        <div class="card-name">Số lượng thành viên</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class='bx bxs-user-rectangle'></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{listDuAn.length}}</div>
+                        <div class="card-name">Dự án sắp triển khai</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class='bx bxl-shopify'></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{listTask.length}}</div>
+                        <div class="card-name">Các task đang xử lý</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class='bx bx-task'></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{totalPrice}}</div>
+                        <div class="card-name">Tổng chi phí các dự án</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class='bx bx-dollar'></i>
+                    </div>
+                </div>
+            </div>
+<!-- 
+          <div [ngSwitch]="true">
+            <app-task-list *ngSwitchCase="chucNang=='listtask'"></app-task-list>
+            <app-nhanvien-list *ngSwitchCase="chucNang=='listnv'"></app-nhanvien-list>
+            <app-duanchitiet *ngSwitchCase="chucNang=='ct'" [sp]="spDangXem"></app-duanchitiet>
+            <app-duan-list *ngSwitchCase="chucNang=='listduan'" (capnhatidSP)="ganSP($event)"></app-duan-list> 
+          </div>
+          <div [ngSwitch]="true">
+            <app-duan-them *ngSwitchCase="chucNang=='duanthem'"></app-duan-them>
+            <app-task-them *ngSwitchCase="chucNang=='taskthem'"></app-task-them>
+            <app-nhanvien-them *ngSwitchCase="chucNang=='nvthem'"></app-nhanvien-them>
+          </div> -->
+          <router-outlet></router-outlet>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+{
+  "listDuAn": [
+    {
+      "tenDuAn": "abc",
+      "ngayStart": "2002-07-27",
+      "tien": 2000000,
+      "leader": 1,
+      "thanhvien": 1,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "tenDuAn": "123123123123123aaaaa",
+      "ngayStart": "0123-03-12",
+      "tien": 123123,
+      "leader": "1",
+      "thanhvien": "1"
+    },
+    {
+      "tenDuAn": "12312312123123123",
+      "ngayStart": "121111-03-12",
+      "tien": 123,
+      "leader": "1",
+      "thanhvien": "1",
+      "id": 3
+    }
+  ],
+  "listNhanVien": [
+    {
+      "ho": "Phạm",
+      "ten": "Phạm",
+      "ngaysinh": "2002-07-27",
+      "phai": "1",
+      "khuvuc": 3,
+      "id": 1
+    },
+    {
+      "ho": "123213",
+      "ten": "1123aaaaaa",
+      "ngaysinh": "0211-03-12",
+      "phai": "1",
+      "khuvuc": 2,
+      "id": 2
+    },
+    {
+      "ho": "anhtien",
+      "ten": "1232322123",
+      "ngaysinh": "0321-02-12",
+      "phai": "0",
+      "khuvuc": 1,
+      "id": 3
+    }
+  ],
+  "listTask": [
+    {
+      "tenTask": "Phân tích yêu cầu",
+      "duAnID": 1,
+      "nhanvienID": 1,
+      "moTa": "Phân tích các yêu cầu của khách hàng để team thực hiện",
+      "status": 0,
+      "priority": 1,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "tenTask": "1231232131232332",
+      "duAnID": 133,
+      "nhanvienID": 133,
+      "priority": 13,
+      "status": "2",
+      "moTa": "123213"
+    },
+    {
+      "id": 3,
+      "tenTask": "6123123123aaaâ",
+      "duAnID": "1",
+      "nhanvienID": "1",
+      "priority": "1",
+      "status": "1",
+      "moTa": "123"
+    }
+  ],
+  "user": [
+    {
+      "username": "anhtien",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "username": "aa",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "username": "anhtien1",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "username": "phamanhtien",
+      "password": "123123",
+      "id": 4
+    }
+  ]
+}

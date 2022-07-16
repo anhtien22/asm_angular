@@ -1,0 +1,38 @@
+<main>
+    <div class="table-data">
+        <form action="" method="POST" class="form-add" enctype="multipart/form-data" #formSuaDA="ngForm" >
+            <h3 class="text-center" style="color: black;">CẬP NHẬT DỰ ÁN</h3>
+            <div class="form-group">
+                <label class="text">ID</label>
+                <input type="text" class="form-control" name="id" [(ngModel)]="da.id" readonly  />
+            </div>
+            <div class="form-group">
+                <label class="text">Tên dự án</label>
+                <input type="text" class="form-control" name="tenDuAn" [(ngModel)]="da.tenDuAn"/>
+            </div>
+            <div class="form-group">
+                <label class="text">Ngày bắt đầu</label>
+                <input type="date" class="form-control" name="ngayStart" [(ngModel)]="da.ngayStart" />
+            </div>
+            <div class="form-group">
+                <label class="text">Giá dự án</label>
+                <input type="number" class="form-control" name="tien" [(ngModel)]="da.tien" />
+            </div>
+            <div class="form-group">
+                <label class="text">Leader</label>
+                <select class="form-control" [(ngModel)]="da.leader" name="leader">
+                    <option *ngFor="let da of listDuAn" value="{{da.id}}" >{{da.tenDuAn}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="text">Thành viên</label>
+                <select class="form-control" [(ngModel)]="da.thanhvien" name="thanhvien">
+                    <option *ngFor="let nv of listNhanVien" value="{{nv.id}}" >{{ ((nv.ho)+ " "+(nv.ten)) }}</option>
+                </select>
+            </div>
+            <div class="button">
+                <button type="button" class="btn" id="btnLuu" (click)="suaDA(formSuaDA.value)">THÊM SẢN PHẨM</button>
+            </div>
+        </form>
+    </div>
+</main>

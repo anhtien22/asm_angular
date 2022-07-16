@@ -1,0 +1,66 @@
+<style>
+    em{
+        color: red;
+    }
+</style>
+<main>
+    <div class="table-data">
+        <form action="" method="POST" class="form-add" enctype="multipart/form-data" #formDA="ngForm" validate>
+            <h3 class="text-center" style="color: black;">THÊM DỰ ÁN</h3>
+            <!-- <div class="form-group">
+                <label class="text">ID</label>
+                 <input type="number" class="form-control" name="id" [(ngModel)]="da.id"/> 
+                <input type="number" class="form-control" name="id" ngModel/>
+            </div>  -->
+            <div class="form-group">
+                <label class="text">Tên dự án</label>
+                <!-- <input type="text" class="form-control" name="tenDuAn" [(ngModel)]="da.tenDuAn"/> -->
+                <input type="text" class="form-control"  [(ngModel)]="tenDuAn" name="tenDuAn" required minlength="15" #loiun="ngModel"/>
+                <em *ngIf="loiun.errors?.['minlength']['actualLength']<loiun.errors?.['minlength']['requiredLength']"> 
+                    Tên Dự Án chưa đủ dài 
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text">Ngày bắt đầu</label>
+                <!-- <input type="date" class="form-control" name="ngayStart" [(ngModel)]="da.ngayStart" /> -->
+                <input type="date" class="form-control" [(ngModel)]="ngayStart" name="ngayStart" required minlength="8" #loidate="ngModel" />
+                <em  *ngIf="loidate.invalid"> 
+                    Bạn chưa chọn đủ ngày tháng năm
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text">Giá dự án</label>
+                <!-- <input type="number" class="form-control" name="tien" [(ngModel)]="da.tien" /> -->
+                <input type="number" class="form-control" [(ngModel)]="tien" name="tien" required minlength="0" #loigia="ngModel" />
+                <em  *ngIf="loigia.invalid"> 
+                   Bạn chưa nhập giá
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text" >Leader</label>
+                <!-- <input type="number" class="form-control" name="leader" [(ngModel)]="da.leader" /> -->
+                <!-- <input type="number" class="form-control" name="leader" ngModel /> -->
+                <select class="form-control" [(ngModel)]="leader" name="leader" required minlength="1" #loileader="ngModel" >
+                    <option *ngFor="let da of listDuAn" value="{{da.id}}" >{{da.tenDuAn}}</option>
+                </select>
+                <em  *ngIf="loileader.invalid"> 
+                   Bạn chưa chọn Leader
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text">Thành viên</label>
+                <!-- <input type="number" class="form-control" name="thanhvien" [(ngModel)]="da.thanhvien"/> -->
+                <!-- <input type="number" class="form-control" name="thanhvien" ngModel/> -->
+                <select class="form-control" [(ngModel)]="thanhvien" name="thanhvien" required minlength="1" #loitv="ngModel" >
+                    <option *ngFor="let nv of listNhanVien" value="{{nv.id}}" >{{ ((nv.ho)+ " "+(nv.ten)) }}</option>
+                </select>
+                <em  *ngIf="loitv.invalid"> 
+                    Bạn chưa chọn Leader
+                  </em>
+            </div>
+            <div class="button">
+                <button type="button" class="btn" id="btnLuu" (click)="dathem(formDA.value)" [disabled]="formDA.invalid" disabled>THÊM SẢN PHẨM</button>
+            </div>
+        </form>
+    </div>
+</main>

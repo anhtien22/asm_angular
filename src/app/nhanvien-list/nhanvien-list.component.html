@@ -1,0 +1,39 @@
+
+<div class="tables">
+    <div class="last-appointments">
+        <div class="heading">
+            <h2>Danh Sách Nhân Viên</h2>
+            <div class="search">
+                <input class="form-control me-2 timkiem"  placeholder="Tìm kiếm" aria-label="Search" name="searchName" [(ngModel)]="searchName" (keyup)="searchByName()">
+                <label for="search"><i class="fas fa-search" ></i></label>
+            </div>
+            <a href="#"  routerLink="/admin/nhanvienthem"  class="btn btn-grad">Thêm Nhân Viên</a>
+        </div>
+        <table class="appointments" id="danhsach">
+            <thead>
+                <td>ID</td>
+                <td>Họ Tên</td>
+                <td>Ngày Sinh</td>
+                <td>Giới Tính</td>
+                <td>Khu Vực</td>
+                <td>Thao Tác</td>
+            </thead>
+            <tbody>
+                <tr *ngFor="let nv of listNhanVien">
+                    <td>{{nv.id}}</td>
+                    <td >{{nv.ho}} {{nv.ten}}</td>
+                    <td>{{nv.ngaysinh | date: 'dd/MM/Y'}}</td>
+                    <td>
+                        {{nv.phai==1 ? "Nam": "Nữ"}}
+                    </td>
+                    <td>{{nv.khuvuc==1?"Bắc":nv.khuvuc==2?"Trung":"Nam"}}</td>
+                    <td>
+                        <a href="#"><i class="far fa-eye"></i></a>
+                        <a href="#" [routerLink]="['/admin/nhanviensua', nv.id]"><i class="far fa-edit"></i></a>
+                        <a href="#" (click)="xoaNV(nv.id)" ><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

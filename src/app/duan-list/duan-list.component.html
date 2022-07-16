@@ -1,0 +1,48 @@
+
+<div class="tables">
+    <div class="last-appointments">
+        <div class="heading">
+            <h2>Danh Sách Dự Án</h2>
+            <div class="search">
+                <input class="form-control me-2 timkiem"  placeholder="Tìm kiếm" aria-label="Search" name="searchName" [(ngModel)]="searchName" (keyup)="searchByName()">
+                <label for="search"><i class="fas fa-search" ></i></label>
+            </div>
+            <a href="#" routerLink="/admin/duanthem" class="btn btn-grad">Thêm Dự Án</a>
+        </div>
+        <table class="appointments" id="danhsach">
+            <thead>
+                <td>ID</td>
+                <td>Tên Dự Án</td>
+                <td>Ngày Bắt Đầu</td>
+                <td>Tiền</td>
+                <td>Leader</td>
+                <!-- <td>Thành Viên</td> -->
+                <td>Thao Tác</td>
+            </thead>
+            <tbody>
+                <tr *ngFor="let da of listDuAn">
+                    <td>{{da.id}}</td>
+                    <td>{{da.tenDuAn}}</td>
+                    <td>{{da.ngayStart | date: 'dd/MM/Y'}}</td>
+                    <td>
+                        {{da.tien.toLocaleString('vi-VN') + " VNĐ"}}
+                    </td>
+                    <td>{{da.leader==1? "Trưởng Phòng":da.leader==2?"Nhân Viên":"Thực tập sinh"}}</td>
+                    <!-- <td>{{da.thanhvien}}</td> -->
+                    <td>
+                        <a href="#" [routerLink]="['/admin/duanchitiet', da.id]"><i class="far fa-eye"></i></a>
+                        <a href="#"  [routerLink]="['/admin/duansua', da.id]"><i class="far fa-edit"></i></a>
+                        <a href="#"  (click)="xoaDA(da.id)" ><i class="far fa-trash-alt"></i></a>
+                        <!-- <a href="#" [routerLink]="['/admin/duanchitiet', da.id]"><i class="far fa-eye"></i></a>
+                        <a href="#"  [routerLink]="['/admin/duansua', da.id]"><i class="far fa-edit"></i></a>
+                        <a href="#" (click)="xoaSP(da.id)"><i class="far fa-trash-alt"></i></a> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+           
+

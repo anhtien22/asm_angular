@@ -1,0 +1,43 @@
+
+<div class="tables">
+    <div class="last-appointments">
+        <div class="heading">
+            <h2>Danh Sách Task</h2>
+            <div class="search">
+                <input class="form-control me-2 timkiem"  placeholder="Tìm kiếm" aria-label="Search" name="searchName" [(ngModel)]="searchName" (keyup)="searchByName()">
+                <label for="search"><i class="fas fa-search" ></i></label>
+            </div>
+            <a href="#" routerLink="/admin/taskthem"   class="btn btn-grad">Thêm Task</a>
+        </div>
+        <table class="appointments" id="danhsach">
+            <thead>
+                <td>ID</td>
+                <td>Tên Task</td>
+                <td>Mô Tả</td>
+                <!-- <td>Dự Án ID</td>
+                <td>Nhân Viên ID</td> -->
+                <td>Quyền</td>
+                <td>Trạng Thái</td>
+                <td>Thao Tác</td>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ta of listTask">
+                    <td>{{ta.id}}</td>
+                    <td >{{ta.tenTask}}</td>
+                    <td>{{ta.moTa}}</td>
+                    <!-- <td>
+                        {{ta.duAnID}}
+                    </td>
+                    <td>{{ta.nhanvienID}}</td> -->
+                    <td>{{ta.priority==1?"Admin":"Nhân Viên"}}</td>
+                    <td>{{ta.status==1?"Hiện":"Ẩn"}}</td>
+                    <td>
+                        <a href="#"><i class="far fa-eye"></i></a>
+                        <a href="" [routerLink]="['/admin/tasksua', ta.id]"><i class="far fa-edit"></i></a>
+                        <a href="#"  (click)="xoaTASK(ta.id)" ><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

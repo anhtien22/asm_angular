@@ -1,0 +1,68 @@
+<style>
+    em{
+        color: red;
+    }
+</style>
+<main>
+    <div class="table-data">
+        <form action="" method="POST" class="form-add" enctype="multipart/form-data" #formNV="ngForm">
+            <h3 class="text-center" style="color: black;">THÊM NHÂN VIÊN</h3>
+            <!-- <div class="form-group">
+                <label class="text">ID</label>
+                <input type="number" class="form-control" name="id" [(ngModel)]="nv.id"/> 
+                <input type="number" class="form-control" name="id" ngModel/>
+            </div> -->
+            <div class="form-group">
+                <label class="text">Họ</label>
+                <!-- <input type="text" class="form-control" name="ho" [(ngModel)]="nv.ho/> -->
+                <input type="text" class="form-control" [(ngModel)]="ho" name="ho" required minlength="2" #loiun="ngModel" />
+                <em *ngIf="loiun.errors?.['minlength']['actualLength']<loiun.errors?.['minlength']['requiredLength']"> 
+                    Họ chưa đủ dài 
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text">Tên</label>
+                <!-- <input type="text" class="form-control" name="ten" [(ngModel)]="nv.ten" /> -->
+                <input type="text" class="form-control" name="ten" [(ngModel)]="ten" required minlength="8" #loiten="ngModel"  />
+                <em *ngIf="loiten.errors?.['minlength']['actualLength']<loiten.errors?.['minlength']['requiredLength']"> 
+                    Tên chưa đủ dài 
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text">Ngày sinh</label>
+                <!-- <input type="date" class="form-control" name="ngaysinh" [(ngModel)]="nv.ngaysinh" /> -->
+                <input type="date" class="form-control" name="ngaysinh" [(ngModel)]="ngaysinh" required minlength="8" #loidate="ngModel" />
+                <em  *ngIf="loidate.invalid"> 
+                    Bạn chưa chọn ngày sinh
+                </em>
+            </div>
+            <div class="form-group">
+                <label class="text" >Giới tính: </label>
+                <!-- <input type="radio"  value="1"  name="phai" [(ngModel)]="nv.phai" /> -->
+                <input type="radio"  value="1"  name="phai" [(ngModel)]="phai" required minlength="1" #loigt="ngModel" />
+                <label class="text" >Nam</label>
+                <!-- <input type="radio" value="0"  name="phai" [(ngModel)]="nv.phai"/> -->
+                <input type="radio" value="0"  name="phai" [(ngModel)]="phai" required minlength="1" #loigt="ngModel"/>
+                <label class="text" >Nữ</label>
+                <em  *ngIf="loigt.invalid"> 
+                    Bạn chưa chọn giới tính
+                </em>
+            </div>
+            <div class="form-group">
+                <label class="text">Khu vực</label>                
+                <!-- <input type="text" class="form-control" name="khuvuc" [(ngModel)]="nv.khuvuc"/> -->
+                <select class="form-control" name="khuvuc" [(ngModel)]="khuvuc" required minlength="1" #loikv="ngModel" >
+                    <option  value="1" >Bắc</option>
+                    <option  value="2" >Trung</option>
+                    <option  value="3" >Nam</option>
+                </select>
+                <em  *ngIf="loikv.invalid"> 
+                    Bạn chưa nhập khu vực
+                </em>
+            </div>
+            <div class="button">
+                <button type="button" class="btn" id="btnLuu" (click)="nvthem(formNV.value)">THÊM SẢN PHẨM</button>
+            </div>
+        </form>
+    </div>
+</main>

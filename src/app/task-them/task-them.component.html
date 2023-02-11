@@ -1,0 +1,75 @@
+<style>
+    em{
+        color: red;
+    }
+</style>
+<main>
+    <div class="table-data">
+        <form action="" method="POST" class="form-add" enctype="multipart/form-data" #formTASK="ngForm" validate>
+            <h3 class="text-center" style="color: black;">THÊM TASK</h3>
+            <!-- <div class="form-group">
+                <label class="text" for="cat_id">Tên loại</label>
+                <select name="#" class="form-control" id="cat_id">
+            
+                </select>
+            </div> -->
+            <!-- <div class="form-group">
+                <label class="text" for="id">Mã sản phẩm</label>
+                <input type="number" class="form-control" id="id" />
+            </div> -->
+            <div class="form-group">
+                <label class="text">Tên task</label>
+                <input type="text" class="form-control" name="tenTask" [(ngModel)]="tenTask"  required minlength="10" #loita="ngModel"/>
+                <em *ngIf="loita.errors?.['minlength']['actualLength']<loita.errors?.['minlength']['requiredLength']" > 
+                    Tên Task chưa đủ dài 
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text">ID dự án</label>
+                <select name="#" class="form-control" [(ngModel)]="duAnID" name="duAnID" required minlength="1" #loita="ngModel">
+                    <option *ngFor="let da of listDuAn " value="{{da.id}}" >{{da.tenDuAn}}</option>
+                </select>
+                <em  *ngIf="loita.invalid"> 
+                    Bạn chưa chọn tên dự án
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text" for="giasp">ID Nhân viên</label>
+                <select class="form-control"  [(ngModel)]="nhanvienID" name="nhanvienID" required minlength="1"  #loita="ngModel" >
+                    <option *ngFor="let nv of listNhanVien " value="{{nv.id}}">{{ ((nv.ho)+ " "+(nv.ten)) }}</option>
+                </select>
+                <em  *ngIf="loita.invalid"class="text-danger"> 
+                    Bạn chưa chọn tên nhân viên
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text" >Quyền</label>
+                <select class="form-control"  [(ngModel)]="priority" name="priority" required minlength="1" #loita="ngModel">
+                    <option value="1">Admin</option>
+                    <option value="2">Nhân Viên</option>
+                </select>
+                <em  *ngIf="loita.invalid"class="text-danger"> 
+                    Bạn chưa chọn quyền
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text">Trạng Thái</label>
+                <select  class="form-control" [(ngModel)]="status" name="status" required minlength="1" #loita="ngModel">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <em  *ngIf="loita.invalid"class="text-danger"> 
+                    Bạn chưa chọn trạng thái
+                 </em>
+            </div>
+            <div class="form-group">
+                <label class="text" >Mô tả</label>
+                <textarea cols="30" rows="5" class="form-control" name="moTa" [(ngModel)]="moTa" style="background: #a6b1bb;color: white;"></textarea>
+            </div>
+            <div class="button">
+                <!-- <input type="hidden" value="" id="id" /> -->
+                <button type="button" class="btn" id="btnLuu" (click)="themTASK(formTASK.value)" [disabled]="formTASK.invalid" disabled>THÊM SẢN PHẨM</button>
+            </div>
+        </form>
+    </div>
+</main>

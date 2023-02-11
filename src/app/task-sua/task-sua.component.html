@@ -1,0 +1,55 @@
+<main>
+    <div class="table-data">
+        <form action="" method="POST" class="form-add" enctype="multipart/form-data" #formSuaTA="ngForm">
+            <h3 class="text-center" style="color: black;">CẬP NHẬT TASK</h3>
+            <!-- <div class="form-group">
+                <label class="text" for="cat_id">Tên loại</label>
+                <select name="#" class="form-control" id="cat_id">
+            
+                </select>
+            </div> -->
+            <div class="form-group">
+                <label class="text">ID</label>
+                <input type="text" class="form-control" name="id" [(ngModel)]="ta.id" readonly/>
+            </div>
+            <div class="form-group">
+                <label class="text">Tên task</label>
+                <input type="text" class="form-control" name="tenTask" [(ngModel)]="ta.tenTask"/>
+            </div>
+            <div class="form-group">
+                <label class="text">ID dự án</label>
+                <select name="#" class="form-control" [(ngModel)]="ta.duAnID" name="duAnID">
+                    <option *ngFor="let da of listDuAn " value="{{da.id}}" >{{da.tenDuAn}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="text" for="giasp">ID Nhân viên</label>
+                <select class="form-control" [(ngModel)]="ta.nhanvienID" name="nhanvienID" >
+                    <option *ngFor="let nv of listNhanVien " value="{{nv.id}}">{{ ((nv.ho)+ " "+(nv.ten)) }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="text" >Priority</label>
+                <select name="#" class="form-control" [(ngModel)]="ta.priority" name="priority" >
+                    <option value="1">Admin</option>
+                    <option value="2">Nhân Viên</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="text">Status</label>
+                <select  class="form-control" [(ngModel)]="ta.status" name="status" >
+                    <option value="1">Hiện</option>
+                    <option value="2">Ẩn</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="text" >Mô tả</label>
+                <textarea cols="30" rows="5" class="form-control" name="moTa" [(ngModel)]="ta.moTa" style="background: #a6b1bb;color: white;"></textarea>
+            </div>
+            <div class="button">
+                <!-- <input type="hidden" value="" id="id" /> -->
+                <button type="button" class="btn" id="btnLuu" (click)="suaTA(formSuaTA.value)">THÊM SẢN PHẨM</button>
+            </div>
+        </form>
+    </div>
+</main>
